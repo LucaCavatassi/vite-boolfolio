@@ -5,20 +5,26 @@ export default {
   data () {
     return {
       projects: [],
-      links: []
+      resource_url: "http://127.0.0.1:8000/api/projects",
     }
   },
   
   components: {
-    ProjectCard
+    VPaginator: VuePaginator, 
+    ProjectCard,
   },
   
-  created () {
-    axios.get("http://127.0.0.1:8000/api/projects").then((resp)=> {
-      this.projects = resp.data.results.data;
-      this.links = resp.data.results.links;
-      // console.log(this.links[6].url);
-      })
+  // created () {
+  //   axios.get("http://127.0.0.1:8000/api/projects").then((resp)=> {
+  //     this.projects = resp.data.results.data;
+  //     this.links = resp.data.results.links;
+  //     })
+  // },
+
+  methods: {
+    updateResource(data){
+      this.projects = data
+    }
   }
 }
 </script>
@@ -31,7 +37,7 @@ export default {
     </div>
     <ProjectCard :projects="projects"/>
     <div class="d-flex align-items-center">
-      <a :href="links[6].url"  class="btn btn-primary"> > </a>
+      <v-paginator :resource_url="this.resource_url" @update="updateResource"></v-paginator>
     </div>
   </div>
 </template>
