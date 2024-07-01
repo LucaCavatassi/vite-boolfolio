@@ -1,4 +1,25 @@
 <script>
+    export default {
+        data(){
+            return {
+                navItems: [
+                    {
+                        routeName: "home",
+                        title: "Home"
+                    },
+                    {
+                        routeName: "about",
+                        title: "About"
+                    },
+                    {
+                        routeName: "projects",
+                        title: "Projects"
+                    }
+                ]
+            }
+        }
+    }
+
 </script>
 
 <template>
@@ -10,8 +31,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
+                <ul class="navbar-nav" v-for="navItem in navItems">
+                    <li class="nav-item"> <router-link :to="{ name: navItem.routeName }">{{navItem.title}}</router-link>  </li>
+                    <!-- <li class="nav-item">
                         <router-link :to="{ name: 'home' }">Home</router-link>
                     </li>
                     <li class="nav-item">
@@ -19,7 +41,7 @@
                     </li>
                     <li class="nav-item">
                         <router-link :to="{ name: 'projects' }">Projects</router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
