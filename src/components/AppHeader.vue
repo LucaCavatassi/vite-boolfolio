@@ -4,7 +4,7 @@
 <template>
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Boolfolio</a>
+            <router-link :to="{ name: 'home' }" class="navbar-brand">Boolfolio</router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -12,13 +12,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <router-link :to="{ name: 'home' }">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <router-link :to="{ name: 'about' }">About</router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Projects</a>
+                        <router-link :to="{ name: 'projects' }">Projects</router-link>
                     </li>
                 </ul>
             </div>
