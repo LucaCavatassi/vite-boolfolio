@@ -30,4 +30,10 @@ export default {
     </div>
 </template>
 
-<style></style>
+<style scoped lang="scss">
+    .col {
+        a{
+            text-decoration: none;
+        }
+    }
+</style>

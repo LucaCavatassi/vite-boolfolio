@@ -12,7 +12,12 @@ export default {
         
         axios.get(`http://127.0.0.1:8000/api/projects/${slug}`).then((resp) => {
             this.project = resp.data.results;
-            // console.log(this.project)
+            console.log(this.project)
+        }).catch((error) => {
+            if (error.response.status === 404) {
+                // console.log("rindirizzo");
+                this.$router.push({ name: "not-found" });
+            }
         })
     }
 }
