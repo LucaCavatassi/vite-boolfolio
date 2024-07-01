@@ -8,7 +8,8 @@ export default {
     data() {
         return {
             projects: [],
-            links: []
+            lastPage: [],
+            curPage: 1,
         }
     },
 
@@ -17,11 +18,36 @@ export default {
     },
 
     created() {
-        axios.get("http://127.0.0.1:8000/api/projects").then((resp) => {
+        this.getProjects();
+    },
+
+    methods: {
+        getProjects() {
+            axios.get("http://127.0.0.1:8000/api/projects", {
+                params: {
+                    page: this.curPage
+                },
+            }).then((resp) => {
             this.projects = resp.data.results.data;
-            this.links = resp.data.results.links;
-            // console.log(this.links[6].url);
-        })
+            this.lastPage = resp.data.results.last_page;
+            })
+        },
+        changePage(page) {
+            this.curPage = page
+            this.getProjects();
+            console.log(this.curPage);
+        },
+
+        firstPage() {
+            this.curPage = 1
+            this.getProjects();
+        },
+
+        latestPage() {
+            this.curPage = this.lastPage;
+            this.getProjects();
+            console.log(this.curPage);
+        }
     }
 }
 </script>
@@ -31,6 +57,21 @@ export default {
     <div class="container d-flex gap-2">
         <div class="row">
             <ProjectCard :projects="projects" />
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" @click="firstPage" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item" v-for="page in lastPage"><a class="page-link" @click="changePage(page)" href="#">{{ page }}</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" @click="latestPage" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </template>
