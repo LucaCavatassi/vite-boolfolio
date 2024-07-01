@@ -1,6 +1,7 @@
 <script>
 import axios from "axios"
 import ProjectCard from "./components/ProjectCard.vue";
+import AppHeader from "./components/AppHeader.vue";
 export default {
   data () {
     return {
@@ -10,7 +11,8 @@ export default {
   },
   
   components: {
-    ProjectCard
+    ProjectCard,
+    AppHeader
   },
   
   created () {
@@ -24,16 +26,9 @@ export default {
 </script>
 
 <template>
-  <h1 class="text-center py-3">I miei progetti!</h1>
-  <div class="container d-flex gap-2">
-    <div class="d-flex align-items-center">
-      <a class="btn btn-primary"> < </a>
-    </div>
+    <AppHeader/>
+    <router-view></router-view>
     <ProjectCard :projects="projects"/>
-    <div class="d-flex align-items-center">
-      <a :href="links[6].url"  class="btn btn-primary"> > </a>
-    </div>
-  </div>
 </template>
 
 <style>
