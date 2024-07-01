@@ -31,22 +31,22 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav" v-for="navItem in navItems">
-                    <li class="nav-item"> <router-link :to="{ name: navItem.routeName }">{{navItem.title}}</router-link>  </li>
-                    <!-- <li class="nav-item">
-                        <router-link :to="{ name: 'home' }">Home</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'about' }">About</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link :to="{ name: 'projects' }">Projects</router-link>
-                    </li> -->
+                    <router-link class="me-2" :to="{ name: navItem.routeName }"><li class="nav-item"> {{navItem.title}} </li></router-link> 
                 </ul>
             </div>
         </div>
     </nav>
 </template>
 
-<style></style>
+<style scoped lang="scss">
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .router-link-active {
+            color: cornflowerblue;
+        }
+</style>
