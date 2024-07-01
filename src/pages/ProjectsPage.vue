@@ -27,7 +27,12 @@ export default {
 </script>
 
 <template>
-    <ProjectCard :projects="projects" />
+    <h1 class="text-center py-3">I miei progetti!</h1>
+    <div class="container d-flex gap-2">
+        <div class="row">
+            <ProjectCard :projects="projects" />
+        </div>
+    </div>
 </template>
 
 <style></style>
