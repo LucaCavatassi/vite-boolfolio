@@ -14,7 +14,8 @@
                     {
                         routeName: "projects",
                         title: "Projects"
-                    }
+                    },
+                    
                 ]
             }
         }

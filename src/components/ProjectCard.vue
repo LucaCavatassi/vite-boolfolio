@@ -12,7 +12,7 @@ export default {
     <div class="container d-flex gap-2">
         <div class="row">
             <div class="col d-flex justify-content-center mb-3" v-for="project in projects">
-                <div class="card h-100" style="width: 18rem;">
+                <router-link :to="{ name:'single-project', params: {slug: project.slug} }" class="card h-100" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{ project.title }}</h5>
                         <p class="card-text">{{ project.description }}</p>
@@ -24,7 +24,7 @@ export default {
                             <p v-for="technology in project.technologies" class="card-text">{{technology.name}}</p>
                         </div>
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
